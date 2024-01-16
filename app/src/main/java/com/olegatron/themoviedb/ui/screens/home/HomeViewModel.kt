@@ -1,26 +1,21 @@
 package com.olegatron.themoviedb.ui.screens.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.olegatron.domain.model.Movie
-
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import com.olegatron.data.paging.MoviePagingSource
 import com.olegatron.domain.usecases.GetMoviesUseCase
-import kotlinx.coroutines.launch
 
 class HomeViewModel(private val getMoviesUseCase: GetMoviesUseCase) : ViewModel() {
-    private var _movies = MutableLiveData<List<Movie>?>()
-    val movies: LiveData<List<Movie>?> = _movies
+    val movies = Pager(
+        config = PagingConfig(
+            pageSize = 20,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { MoviePagingSource(getMoviesUseCase) })
+        .flow.cachedIn(viewModelScope)
 
-    init {
-        getTrendingMovies()
-    }
-
-    private fun getTrendingMovies() {
-        viewModelScope.launch {
-            val response = getMoviesUseCase()
-            _movies.postValue(response)
-        }
-    }
 }

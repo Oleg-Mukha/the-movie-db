@@ -59,6 +59,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
+    // Paging
+    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
+
     // DI
     implementation ("io.insert-koin:koin-android:3.4.3")
 

@@ -48,6 +48,9 @@ dependencies {
     // Koin
     implementation ("io.insert-koin:koin-android:3.4.3")
 
+    // Paging
+    implementation("androidx.paging:paging-common-ktx:3.2.1")
+
     // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

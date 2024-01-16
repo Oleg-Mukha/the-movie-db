@@ -16,7 +16,7 @@ class MovieViewHolder(private val binding: ListItemBinding) :
             tvMovieTitle.text = movie.title
 
             Glide.with(itemView)
-                .load(URL + movie.poster_path)
+                .load(URL + movie.poster)
                 .thumbnail(Glide.with(itemView).load(R.drawable.ic_launcher_background))
                 .into(ivPoster)
         }
