@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.olegatron.themoviedb.databinding.FragmentHomeBinding
@@ -14,7 +15,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class   HomeFragment : Fragment() {
+class HomeFragment : Fragment() {
     private val viewModel by viewModel<HomeViewModel>()
 
     private var _binding: FragmentHomeBinding? = null
@@ -33,7 +34,7 @@ class   HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = MovieAdapter()
+        adapter = MovieAdapter(findNavController())
 
         binding.apply {
             recyclerView = rvMovieList

@@ -17,5 +17,4 @@ class HomeViewModel(private val getMoviesUseCase: GetMoviesUseCase) : ViewModel(
         ),
         pagingSourceFactory = { MoviePagingSource(getMoviesUseCase) })
         .flow.cachedIn(viewModelScope)
-
 }
