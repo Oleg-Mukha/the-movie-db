@@ -1,5 +1,7 @@
 package com.olegatron.themoviedb.ui.views.bindingadapters
 
+import android.util.Log
+import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
