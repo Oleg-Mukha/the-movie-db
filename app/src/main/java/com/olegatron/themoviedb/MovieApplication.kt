@@ -1,6 +1,7 @@
 package com.olegatron.themoviedb
 
 import android.app.Application
+import com.olegatron.data.db.di.databaseModule
 import com.olegatron.data.di.movieDataModule
 import com.olegatron.themoviedb.di.movieAppModule
 import org.koin.android.ext.koin.androidContext
@@ -11,7 +12,7 @@ class MovieApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@MovieApplication)
-            modules(listOf(movieDataModule, movieAppModule))
+            modules(listOf(movieDataModule, movieAppModule, databaseModule))
         }
     }
 }
