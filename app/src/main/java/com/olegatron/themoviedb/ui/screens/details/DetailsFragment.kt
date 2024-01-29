@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.like.LikeButton
+import com.like.OnLikeListener
+import com.olegatron.data.db.data.Like
 import com.olegatron.themoviedb.databinding.FragmentDetailsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,6 +30,17 @@ class DetailsFragment : Fragment() {
 
         viewModel.getMovie(id.movieId)
         viewModel.getCredits(id.movieId)
+        viewModel.isLiked(id.movieId)
+
+        binding.button.setOnLikeListener(object: OnLikeListener {
+            override fun liked(likeButton: LikeButton?) {
+                viewModel.insertLike(Like(id.movieId))
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                viewModel.removeLike(id.movieId)
+            }
+        })
 
         return binding.root
     }
