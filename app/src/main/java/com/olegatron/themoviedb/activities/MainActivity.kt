@@ -3,10 +3,8 @@ package com.olegatron.themoviedb.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.olegatron.themoviedb.R
 import com.olegatron.themoviedb.databinding.ActivityMainBinding
 
@@ -23,8 +21,27 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
 
-        binding.bottomNavView.setupWithNavController(navController)
+        binding.apply {
+            bottomNavView.setupWithNavController(navController)
+
+            bottomNavView.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.homeFragment -> {
+                        navController.navigate(R.id.homeFragment)
+                        true
+                    }
+
+                    R.id.likeFragment -> {
+                        navController.navigate(R.id.likeFragment)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }
     }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
