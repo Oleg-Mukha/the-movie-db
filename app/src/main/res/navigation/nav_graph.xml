@@ -24,4 +24,13 @@
             android:name="movieId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/likeFragment"
+        android:name="com.olegatron.themoviedb.ui.screens.favorites.LikeFragment"
+        android:label="fragment_like"
+        tools:layout="@layout/fragment_like">
+        <action
+            android:id="@+id/action_likeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
 </navigation>

@@ -6,7 +6,7 @@
         android:icon="@drawable/film"
         android:title="Trending Movies"/>
     <item
-        android:id="@+id/fragment3"
+        android:id="@+id/likeFragment"
         android:icon="@drawable/favorite"
         android:title="Favorites"/>
 </menu>
